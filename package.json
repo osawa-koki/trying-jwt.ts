@@ -1,0 +1,19 @@
+{
+  "name": "trying-jwt.ts",
+  "version": "1.0.0",
+  "description": "💮💮💮 JWT(JSON Web Token)を実装しながら学ぶ！",
+  "main": "./src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osawa-koki/trying-jwt.ts.git"
+  },
+  "author": "osawa-koki <koki@osawa.cloud>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/osawa-koki/trying-jwt.ts/issues"
+  },
+  "homepage": "https://github.com/osawa-koki/trying-jwt.ts#readme"
+}
