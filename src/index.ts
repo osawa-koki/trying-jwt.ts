@@ -1,7 +1,9 @@
 import generateKey from "./generateKey";
+import generateKeyOpenSsl from "./generateKeyOpenSsl";
 
 const COMMANDS = {
   generateKey: "generate-key",
+  generateKeyOpenSsl: "generate-key-openssl",
   generateToken: "generate-token",
 } as const;
 
@@ -11,6 +13,9 @@ async function main() {
   switch (command) {
     case COMMANDS.generateKey:
       await generateKey();
+      break;
+    case COMMANDS.generateKeyOpenSsl:
+      await generateKeyOpenSsl();
       break;
     case COMMANDS.generateToken:
       break;

@@ -1,6 +1,8 @@
 import fs from "fs";
 import { generateKeyPairSync } from "crypto";
 
+import { PRIVATE_KEY_PATH, PUBLIC_KEY_PATH } from "./const";
+
 export default async function generateKey() {
   const { publicKey, privateKey } = generateKeyPairSync("rsa", {
     modulusLength: 2048,
@@ -14,6 +16,6 @@ export default async function generateKey() {
     },
   });
 
-  fs.writeFileSync("./data/public.pem", publicKey);
-  fs.writeFileSync("./data/private.pem", privateKey);
+  fs.writeFileSync(PRIVATE_KEY_PATH, privateKey);
+  fs.writeFileSync(PUBLIC_KEY_PATH, publicKey);
 }
