@@ -1,10 +1,11 @@
 import generateKey from "./generateKey";
 import generateKeyOpenSsl from "./generateKeyOpenSsl";
+import generateJwtToken from "./generateJwtToken";
 
 const COMMANDS = {
   generateKey: "generate-key",
   generateKeyOpenSsl: "generate-key-openssl",
-  generateToken: "generate-token",
+  generateJwtToken: "generate-jwt-token",
 } as const;
 
 async function main() {
@@ -17,7 +18,8 @@ async function main() {
     case COMMANDS.generateKeyOpenSsl:
       await generateKeyOpenSsl();
       break;
-    case COMMANDS.generateToken:
+    case COMMANDS.generateJwtToken:
+      await generateJwtToken();
       break;
     default:
       console.error(`🚨 Unknown command: ${command}`);
