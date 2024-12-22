@@ -1,0 +1,40 @@
+name: cd
+
+on:
+  workflow_dispatch:
+  push:
+    # tags: [ 'v-*' ]
+
+jobs:
+  cd:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+      - name: Cache node_modules
+        id: node_modules_cache_id
+        uses: actions/cache@v4
+        with:
+          path: ./node_modules/
+          key: node-modules-${{ hashFiles('./**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile --non-interactive
+      - name: Build
+        run: npm run build
+      - name: Generate key
+        run: npm run start generate-key
+      - name: Cat private key
+        run: cat ./data/private.pem
+      - name: Cat public key
+        run: cat ./data/public.pem
+      - name: Generate JWT
+        run: npm run start generate-jwt
+      - name: Cat JWT
+        run: cat ./data/jwt.txt
+      - name: Verify JWT
+        run: npm run start verify-jwt
