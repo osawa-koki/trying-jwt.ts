@@ -3,9 +3,9 @@ import fs from "fs";
 import jwt from "jsonwebtoken";
 import { Algorithm } from "jsonwebtoken";
 
-import { JWT_TOKEN_PATH, PRIVATE_KEY_PATH } from "./const";
+import { JWT_PATH, PRIVATE_KEY_PATH } from "./const";
 
-export default function generateJwtToken() {
+export default async function generateJwt() {
   const privateKey = fs.readFileSync(PRIVATE_KEY_PATH);
 
   const payload = {
@@ -21,5 +21,5 @@ export default function generateJwtToken() {
 
   const token = jwt.sign(payload, privateKey, options);
 
-  fs.writeFileSync(JWT_TOKEN_PATH, token);
+  fs.writeFileSync(JWT_PATH, token);
 }
