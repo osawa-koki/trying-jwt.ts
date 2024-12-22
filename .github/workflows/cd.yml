@@ -3,7 +3,7 @@ name: cd
 on:
   workflow_dispatch:
   push:
-    # tags: [ 'v-*' ]
+    tags: [ 'v-*' ]
 
 jobs:
   cd:
