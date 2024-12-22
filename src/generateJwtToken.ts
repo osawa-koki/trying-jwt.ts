@@ -14,7 +14,7 @@ export default function generateJwtToken() {
     username: "exampleUser",
   };
 
-  const options = {
+  const options: jwt.SignOptions = {
     algorithm: "RS256" as Algorithm,
     expiresIn: "1h",
   };
